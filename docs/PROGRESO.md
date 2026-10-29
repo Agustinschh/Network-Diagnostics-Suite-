@@ -54,7 +54,12 @@
   - [x] Pantalla `CodeScannerScreen` para lectura de códigos QR, Code-128, Data-Matrix y EAN-13, con Sheet de confirmación, normalización de MAC (`aa:bb:cc:dd:ee:ff`) y detección de seriales duplicados.
   - [x] Pantalla `CameraScreen` a pantalla completa con selector de tipos de evidencia (Rack, Potencia óptica, Serial, Entorno), miniatura de última foto y contador en tiempo real.
   - [x] Tests unitarios aprobados (`__tests__/evidence/evidence.test.ts`).
-- [ ] **Fase 7 — Instalación y reporte PDF (RF-05, RF-06)**
+- [x] **Fase 7 — Instalación y reporte PDF (RF-05, RF-06)**
+  - [x] Motor de plantillas HTML A4 (`src/services/report/template.ts`) con sanitización estricta (`escapeHtml`), truncamiento seguro de logs SSH a 200 líneas, mapa de interfaces MIB-II, fotografías incrustadas en Base64 y bloque de firma técnica.
+  - [x] Servicio de generación y compartición (`src/services/report/ReportService.ts`) sobre `react-native-html-to-pdf` y `react-native-share` con almacenamiento persistente en `reports/`.
+  - [x] Pantalla `InstallationFormScreen` con gestión de borradores automáticos, checklist de pruebas, integración de cámara y GPS, y finalización atómica con encolado Outbox.
+  - [x] Pantalla `ReportPreviewScreen` con metadatos del PDF, tamaño en KB/MB, estado de sincronización y selector de compartir.
+  - [x] Tests unitarios aprobados (`__tests__/report/template.test.ts`).
 - [ ] **Fase 8 — Backend stub y sincronización outbox (RF-07)**
 - [ ] **Fase 9 — Historial (RF-08)**
 - [ ] **Fase 10 — QA, APK release, documentación y demo**
