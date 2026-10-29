@@ -1,0 +1,14 @@
+{
+  "name": "netdiag-backend-stub",
+  "version": "1.0.0",
+  "description": "Backend stub de sincronización Outbox para NetDiag Mobile Suite",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "cors": "^2.8.6",
+    "express": "^4.22.3"
+  }
+}

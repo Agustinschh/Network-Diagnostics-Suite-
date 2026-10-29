@@ -60,6 +60,11 @@
   - [x] Pantalla `InstallationFormScreen` con gestión de borradores automáticos, checklist de pruebas, integración de cámara y GPS, y finalización atómica con encolado Outbox.
   - [x] Pantalla `ReportPreviewScreen` con metadatos del PDF, tamaño en KB/MB, estado de sincronización y selector de compartir.
   - [x] Tests unitarios aprobados (`__tests__/report/template.test.ts`).
-- [ ] **Fase 8 — Backend stub y sincronización outbox (RF-07)**
+- [x] **Fase 8 — Backend stub y sincronización outbox (RF-07)**
+  - [x] Servidor stub Node.js/Express (`backend/src/server.js`) con almacenamiento en SQLite (`better-sqlite3`), idempotencia estricta vía UUID y simulación de fallas mediante headers (`X-Simulate-Error`, `X-Simulate-Delay`).
+  - [x] Algoritmo de retroceso exponencial con variación aleatoria (jitter ±20%) y límite máximo (`src/services/sync/backoff.ts`).
+  - [x] Cliente de sincronización HTTP (`src/services/sync/SyncApi.ts`) con timeout de 30s por AbortController.
+  - [x] Gestor de sincronización Outbox (`src/services/sync/SyncManager.ts`) con escucha reactiva a Wi-Fi (NetInfo), procesamiento por lotes (`takeDue`), desbloqueo de ítems colgados y reintentos.
+  - [x] Tests unitarios aprobados (`__tests__/sync/sync.test.ts`).
 - [ ] **Fase 9 — Historial (RF-08)**
 - [ ] **Fase 10 — QA, APK release, documentación y demo**
