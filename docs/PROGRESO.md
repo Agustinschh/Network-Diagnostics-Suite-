@@ -66,5 +66,11 @@
   - [x] Cliente de sincronización HTTP (`src/services/sync/SyncApi.ts`) con timeout de 30s por AbortController.
   - [x] Gestor de sincronización Outbox (`src/services/sync/SyncManager.ts`) con escucha reactiva a Wi-Fi (NetInfo), procesamiento por lotes (`takeDue`), desbloqueo de ítems colgados y reintentos.
   - [x] Tests unitarios aprobados (`__tests__/sync/sync.test.ts`).
-- [ ] **Fase 9 — Historial (RF-08)**
+- [x] **Fase 9 — Historial (RF-08)**
+  - [x] Repositorio de diagnósticos extendido con `getById` y `getPreviousDiagnostic` para análisis cronológico por host.
+  - [x] Pantalla `HistoryScreen` reactiva con selector segmentado (Instalaciones vs Diagnósticos), buscador por IP/sitio/cliente/serie y observación en tiempo real de WatermelonDB.
+  - [x] Pantalla `HistoryDetailScreen` con visualización completa de instalaciones (georreferenciación GPS, galería de fotos, dispositivo y compartir PDF) y diagnósticos.
+  - [x] Comparador de telemetría SNMP con cálculo de deltas de tráfico (`inOctets_actual - inOctets_previo`, `outOctets_actual - outOctets_previo`) y detección de reinicios de contadores.
+  - [x] Visualizador de consola SSH embebido con `TerminalView`.
+  - [x] Tests unitarios de historial y deltas de tráfico aprobados (`__tests__/history/history.test.ts`).
 - [ ] **Fase 10 — QA, APK release, documentación y demo**

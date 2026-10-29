@@ -37,13 +37,34 @@ export const diagnosticsRepository = {
     });
   },
 
+  async getById(id: string): Promise<Diagnostic | null> {
+    try {
+      return await this.getCollection().find(id);
+    } catch {
+      return null;
+    }
+  },
+
   async listByDevice(deviceId: string): Promise<Diagnostic[]> {
     return await this.getCollection()
       .query(Q.where('device_id', deviceId), Q.sortBy('created_at', Q.desc))
       .fetch();
   },
 
-  observeRecent(limit = 20) {
+  async getPreviousDiagnostic(deviceId: string, beforeDate: Date, kind: 'snmp' | 'ssh'): Promise<Diagnostic | null> {
+    const list = await this.getCollection()
+      .query(
+        Q.where('device_id', deviceId),
+        Q.where('kind', kind),
+        Q.where('created_at', Q.lt(beforeDate.getTime())),
+        Q.sortBy('created_at', Q.desc),
+        Q.take(1)
+      )
+      .fetch();
+    return list.length > 0 ? list[0] : null;
+  },
+
+  observeRecent(limit = 50) {
     return this.getCollection()
       .query(Q.sortBy('created_at', Q.desc), Q.take(limit))
       .observe();
