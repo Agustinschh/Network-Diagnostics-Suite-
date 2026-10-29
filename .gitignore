@@ -1,0 +1,21 @@
+node_modules/
+.env
+.env.local
+
+# Android builds & caches
+app/android/app/build/
+app/android/.gradle/
+app/android/build/
+*.keystore
+!app/android/app/debug.keystore
+
+# Backend local database
+backend/data/
+backend/node_modules/
+
+# OS and IDE files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
