@@ -20,7 +20,15 @@
   - [x] Modelos de datos implementados con decoradores de clases y asociaciones relacionales (`Device`, `Diagnostic`, `Installation`, `EvidencePhoto`, `OutboxItem`, `Setting`).
   - [x] Repositorios de datos transaccionales implementados (`devices`, `diagnostics`, `installations`, `outbox`).
   - [x] Tests unitarios con adaptador LokiJS (`__tests__/db/repositories.test.ts`) pasando al 100%.
-- [ ] **Fase 3 — Descubrimiento LAN (RF-01)**
+- [x] **Fase 3 — Descubrimiento LAN (RF-01)**
+  - [x] Funciones puras de cálculo de subredes (`src/services/discovery/subnet.ts`) con limitación a /24 (regla C3).
+  - [x] Sondeo concurrente TCP (`src/services/discovery/tcpProbe.ts`) con detección de puertos de telecomunicaciones y respuestas `ECONNREFUSED`.
+  - [x] Escaneo mDNS/Bonjour (`src/services/discovery/mdns.ts`) para resolución de nombres de host locales.
+  - [x] Servicio de descubrimiento (`src/services/discovery/DiscoveryService.ts`) con pool de 32 trabajadores, timeout global y persistencia en SQLite.
+  - [x] Verificación y solicitud de permisos nativos de ubicación (`src/services/permissions/PermissionService.ts`).
+  - [x] Store reactivo de escaneo con Zustand y cancelación limpia vía AbortController (`src/store/scanStore.ts`).
+  - [x] Pantallas operativas: `ScanScreen` con barra de progreso determinada y `ManualHostScreen` con validación Zod.
+  - [x] Tests unitarios aprobados (`__tests__/discovery/subnet.test.ts`).
 - [ ] **Fase 4 — Cliente SNMP y codec BER (RF-02)**
 - [ ] **Fase 5 — Credenciales seguras y SSH (RF-03)**
 - [ ] **Fase 6 — Cámara, QR, fotos y GPS (RF-04, RF-05)**
