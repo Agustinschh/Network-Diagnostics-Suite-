@@ -76,19 +76,31 @@ jest.mock('@react-native-community/netinfo', () => ({
 }));
 
 // Mock de react-native-vision-camera
-jest.mock('react-native-vision-camera', () => ({
-  VisionCamera: {
-    cameraPermissionStatus: 'authorized',
-    requestCameraPermission: jest.fn(() => Promise.resolve(true)),
-  },
-  Camera: () => null,
-  useCameraDevice: jest.fn(),
-  useCameraPermission: jest.fn(() => ({
-    hasPermission: true,
-    requestPermission: jest.fn(() => Promise.resolve(true)),
-  })),
-  useCodeScanner: jest.fn(),
-}));
+jest.mock('react-native-vision-camera', () => {
+  const React = require('react');
+  return {
+    VisionCamera: {
+      cameraPermissionStatus: 'authorized',
+      requestCameraPermission: jest.fn(() => Promise.resolve(true)),
+    },
+    Camera: (props) => React.createElement('View', props),
+    useCameraDevice: jest.fn(() => ({ id: 'back-camera', position: 'back' })),
+    useCameraPermission: jest.fn(() => ({
+      hasPermission: true,
+      requestPermission: jest.fn(() => Promise.resolve(true)),
+    })),
+    usePhotoOutput: jest.fn(() => ({
+      capturePhoto: jest.fn(() =>
+        Promise.resolve({
+          saveToTemporaryFileAsync: jest.fn(() => Promise.resolve('/tmp/photo_test.jpg')),
+          dispose: jest.fn(),
+        })
+      ),
+    })),
+    useObjectOutput: jest.fn(() => ({})),
+    useCodeScanner: jest.fn(),
+  };
+});
 
 // Mock de @dylankenneally/react-native-ssh-sftp
 jest.mock('@dylankenneally/react-native-ssh-sftp', () => {

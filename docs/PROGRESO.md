@@ -48,7 +48,12 @@
   - [x] Pantalla `CredentialsScreen` con validación Zod y gestión segura de usuario, clave y comunidad SNMP.
   - [x] Pantalla `SshScreen` con selector de perfil en pills, feedback en vivo y guardado atómico en `diagnostics` y `outbox`.
   - [x] Tests unitarios aprobados (`__tests__/ssh/profiles.test.ts`).
-- [ ] **Fase 6 — Cámara, QR, fotos y GPS (RF-04, RF-05)**
+- [x] **Fase 6 — Cámara, QR, fotos y GPS (RF-04, RF-05)**
+  - [x] Servicio GPS de lectura única (`src/services/evidence/LocationService.ts`) de alta precisión con timeout y umbral de 30 metros (RNF-03).
+  - [x] Servicio de fotos (`src/services/evidence/PhotoService.ts`) con redimensionado (1600 px máx, JPEG 70), guardado en `photos/<installationId>/`, límite estricto de 12 fotos por instalación y sincronización con WatermelonDB.
+  - [x] Pantalla `CodeScannerScreen` para lectura de códigos QR, Code-128, Data-Matrix y EAN-13, con Sheet de confirmación, normalización de MAC (`aa:bb:cc:dd:ee:ff`) y detección de seriales duplicados.
+  - [x] Pantalla `CameraScreen` a pantalla completa con selector de tipos de evidencia (Rack, Potencia óptica, Serial, Entorno), miniatura de última foto y contador en tiempo real.
+  - [x] Tests unitarios aprobados (`__tests__/evidence/evidence.test.ts`).
 - [ ] **Fase 7 — Instalación y reporte PDF (RF-05, RF-06)**
 - [ ] **Fase 8 — Backend stub y sincronización outbox (RF-07)**
 - [ ] **Fase 9 — Historial (RF-08)**
