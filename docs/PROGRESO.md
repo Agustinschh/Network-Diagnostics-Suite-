@@ -73,4 +73,12 @@
   - [x] Comparador de telemetría SNMP con cálculo de deltas de tráfico (`inOctets_actual - inOctets_previo`, `outOctets_actual - outOctets_previo`) y detección de reinicios de contadores.
   - [x] Visualizador de consola SSH embebido con `TerminalView`.
   - [x] Tests unitarios de historial y deltas de tráfico aprobados (`__tests__/history/history.test.ts`).
-- [ ] **Fase 10 — QA, APK release, documentación y demo**
+- [x] **Fase 10 — QA, APK release, documentación y demo**
+  - [x] Generación del bundle JS de producción optimizado para Android (`android/app/src/main/assets/index.android.bundle` de 4.69 MB y 19 assets) validado con éxito.
+  - [x] Corrección de configuración Babel con `@babel/plugin-transform-export-namespace-from` para transpilación de Zod v4.
+  - [x] Integración de dependencias nativas faltantes (`react-native-nitro-modules`, `react-native-nitro-image`) requeridas por VisionCamera v5.
+  - [x] Redacción del documento técnico integral `docs/ARQUITECTURA.md` (diagramas ER, flujos de secuencia y protocolos).
+  - [x] Registro formal de Decisiones de Arquitectura `docs/DECISIONES.md` (ADR-01 a ADR-08).
+  - [x] Actualización de `README.md` con guías completas de inicio rápido para la app móvil y el backend stub.
+  - [x] Suite completa de pruebas unitarias (`npm test`) pasando al 100% (11 suites, 42 tests, 2 snapshots).
+  - [x] Verificación de tipos TypeScript (`npx tsc --noEmit`) con 0 errores.

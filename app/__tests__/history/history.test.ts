@@ -35,8 +35,9 @@ describe('History & Telemetry Delta Comparison (RF-08)', () => {
         ]);
         rec.success = true;
         // Asignar created_at previo manualmente
-        rec._raw.created_at = t0.getTime();
+        (rec._raw as any).created_at = t0.getTime();
       });
+
     });
 
     // 3. Segundo diagnóstico (actual)
