@@ -14,7 +14,12 @@
   - [x] Pestañas (`TabsNavigator` con Red, Historial y Ajustes) y Stack de navegación principal (`RootNavigator`) con todas las pantallas vinculadas.
   - [x] Gestión de configuraciones y cambio de tema dinámico en caliente (`src/store/settingsStore.ts`).
   - [x] Tests de snapshots de componentes UI (`ButtonAndBadge.test.tsx`) y test de navegación inicial pasando al 100%.
-- [ ] **Fase 2 — Persistencia local (WatermelonDB)**
+- [x] **Fase 2 — Persistencia local (WatermelonDB)**
+  - [x] Esquema relacional versión 1 definido (`src/db/schema.ts`) con tablas: devices, diagnostics, installations, evidence_photos, outbox y settings.
+  - [x] Generador de UUIDs v4 configurado en WatermelonDB para idempotencia estricta (RNF-07).
+  - [x] Modelos de datos implementados con decoradores de clases y asociaciones relacionales (`Device`, `Diagnostic`, `Installation`, `EvidencePhoto`, `OutboxItem`, `Setting`).
+  - [x] Repositorios de datos transaccionales implementados (`devices`, `diagnostics`, `installations`, `outbox`).
+  - [x] Tests unitarios con adaptador LokiJS (`__tests__/db/repositories.test.ts`) pasando al 100%.
 - [ ] **Fase 3 — Descubrimiento LAN (RF-01)**
 - [ ] **Fase 4 — Cliente SNMP y codec BER (RF-02)**
 - [ ] **Fase 5 — Credenciales seguras y SSH (RF-03)**
