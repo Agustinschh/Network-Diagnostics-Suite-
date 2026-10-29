@@ -120,3 +120,59 @@ dependencies {
         implementation jscFlavor
     }
 }
+
+configurations.all {
+    exclude group: 'org.bouncycastle', module: 'bcprov-jdk15on'
+}
+
+tasks.register('ensureRNImageResizerSpec') {
+    doLast {
+        def targetDir = file("${project.buildDir}/generated/autolinking/src/main/jni")
+        targetDir.mkdirs()
+        def headerFile = file("${targetDir}/RNImageResizerSpec.h")
+        if (!headerFile.exists()) {
+            headerFile.text = '''#pragma once
+#include <ReactCommon/JavaTurboModule.h>
+#include <ReactCommon/TurboModule.h>
+#include <memory>
+#include <string>
+
+namespace facebook {
+namespace react {
+
+inline std::shared_ptr<TurboModule> RNImageResizerSpec_ModuleProvider(const std::string&, const JavaTurboModule::InitParams&) {
+  return nullptr;
+}
+
+} // namespace react
+} // namespace facebook
+'''
+        }
+        def headerFile2 = file("${targetDir}/NitroModulesSpec.h")
+        if (!headerFile2.exists()) {
+            headerFile2.text = '''#pragma once
+#include <ReactCommon/JavaTurboModule.h>
+#include <ReactCommon/TurboModule.h>
+#include <memory>
+#include <string>
+
+namespace facebook {
+namespace react {
+
+inline std::shared_ptr<TurboModule> NitroModulesSpec_ModuleProvider(const std::string&, const JavaTurboModule::InitParams&) {
+  return nullptr;
+}
+
+} // namespace react
+} // namespace facebook
+'''
+        }
+    }
+}
+
+tasks.configureEach { task ->
+    if (task.name.contains("CMake") || task.name.contains("Autolinking")) {
+        task.finalizedBy(ensureRNImageResizerSpec)
+    }
+}
+
