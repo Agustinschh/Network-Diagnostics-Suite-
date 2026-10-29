@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UI Components - Snapshot Tests renders Badge states correctly 1`] = `null`;
+
+exports[`UI Components - Snapshot Tests renders Button variants correctly 1`] = `null`;

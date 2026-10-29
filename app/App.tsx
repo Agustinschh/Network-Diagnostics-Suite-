@@ -1,22 +1,20 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import { StatusBar, useColorScheme } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { NativeSmokeTest } from './src/dev/NativeSmokeTest';
+import { ThemeProvider } from './src/theme/ThemeProvider';
+import { ToastProvider } from './src/components/ui/Toast';
+import { RootNavigator } from './src/navigation/RootNavigator';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NativeSmokeTest />
+      <ThemeProvider>
+        <ToastProvider>
+          <NavigationContainer>
+            <RootNavigator />
+          </NavigationContainer>
+        </ToastProvider>
+      </ThemeProvider>
     </SafeAreaProvider>
   );
 }

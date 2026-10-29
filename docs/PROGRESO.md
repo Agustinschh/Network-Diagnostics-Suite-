@@ -8,7 +8,12 @@
   - [x] Permisos configurados en `AndroidManifest.xml` (red, Wi-Fi multicast, GPS, cámara).
   - [x] Smoke test de verificación nativa implementado (`src/dev/NativeSmokeTest.tsx`).
   - [x] Suite de tests Jest (`npm test`) y verificación de tipos (`tsc --noEmit`) pasando en verde.
-- [ ] **Fase 1 — Sistema de diseño y navegación**
+- [x] **Fase 1 — Sistema de diseño y navegación**
+  - [x] Tokens implementados (`src/theme/tokens.ts`) con tema claro/oscuro y reglas de alto contraste.
+  - [x] Componentes de interfaz implementados (`Text`, `Button`, `Input`, `Card`, `ListRow`, `Badge`, `Divider`, `EmptyState`, `Toast`, `Sheet`, `Screen`).
+  - [x] Pestañas (`TabsNavigator` con Red, Historial y Ajustes) y Stack de navegación principal (`RootNavigator`) con todas las pantallas vinculadas.
+  - [x] Gestión de configuraciones y cambio de tema dinámico en caliente (`src/store/settingsStore.ts`).
+  - [x] Tests de snapshots de componentes UI (`ButtonAndBadge.test.tsx`) y test de navegación inicial pasando al 100%.
 - [ ] **Fase 2 — Persistencia local (WatermelonDB)**
 - [ ] **Fase 3 — Descubrimiento LAN (RF-01)**
 - [ ] **Fase 4 — Cliente SNMP y codec BER (RF-02)**

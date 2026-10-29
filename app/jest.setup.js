@@ -1,7 +1,20 @@
-/* eslint-disable no-undef */
-
 // Mock de react-native-get-random-values
 jest.mock('react-native-get-random-values', () => ({}));
+
+// Mock de lucide-react-native
+jest.mock('lucide-react-native', () => {
+  const React = require('react');
+  return new Proxy(
+    {},
+    {
+      get: (target, prop) => {
+        return function MockIcon(props) {
+          return React.createElement('Icon', { testID: `icon-${String(prop)}`, ...props });
+        };
+      },
+    }
+  );
+});
 
 // Mock de react-native-udp
 jest.mock('react-native-udp', () => ({
