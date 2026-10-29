@@ -146,3 +146,9 @@ El archivo resultante se generará en:
 ## 📄 Licencia y Créditos
 Desarrollado para la asignatura **Desarrollo de Aplicaciones Móviles (2026)**.  
 Licenciatura en Sistemas de Información.
+
+Al estar corriendo la app en android studio, no puedo probar ciertas funciones ya que no dispongo del hardware necesario. la app reconoce cuando esta corriendo el emulador y usa una ip local del emulador para conectarse al backend. no pude probar la geolocalización ni la camara. tampoco pude probar la detección de QR ni de barras.
+
+un video de preba esta subido a mi drive en 
+https://drive.google.com/file/d/1HrtDQS9mHtZJBDgc6Pric9pkVsR5yEtU/view?usp=sharing
+muestra  la prueba de la app en android studio, con sus pantallas principales y funcionales
