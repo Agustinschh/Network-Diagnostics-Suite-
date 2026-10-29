@@ -91,11 +91,22 @@ jest.mock('react-native-vision-camera', () => ({
 }));
 
 // Mock de @dylankenneally/react-native-ssh-sftp
-jest.mock('@dylankenneally/react-native-ssh-sftp', () => ({
-  connectWithPassword: jest.fn(() => Promise.resolve()),
-  execute: jest.fn(() => Promise.resolve('ok')),
-  disconnect: jest.fn(),
-}));
+jest.mock('@dylankenneally/react-native-ssh-sftp', () => {
+  const mockInstance = {
+    execute: jest.fn(() => Promise.resolve('Linux test-host 5.15.0 #1 SMP\nuptime: up 4 days\n')),
+    disconnect: jest.fn(),
+  };
+  const SSH = {
+    connectWithPassword: jest.fn(() => Promise.resolve(mockInstance)),
+    execute: jest.fn(() => Promise.resolve('ok')),
+    disconnect: jest.fn(),
+  };
+  return {
+    __esModule: true,
+    default: SSH,
+    ...SSH,
+  };
+});
 
 // Mock de react-native-html-to-pdf
 jest.mock('react-native-html-to-pdf', () => ({
@@ -163,3 +174,11 @@ jest.mock('@bam.tech/react-native-image-resizer', () => ({
     })
   ),
 }));
+
+// Mock de @react-native-clipboard/clipboard
+jest.mock('@react-native-clipboard/clipboard', () => ({
+  setString: jest.fn(),
+  getString: jest.fn(() => Promise.resolve('')),
+  hasString: jest.fn(() => Promise.resolve(true)),
+}));
+

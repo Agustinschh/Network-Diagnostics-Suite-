@@ -5,6 +5,8 @@ export type ErrorCode =
   | 'PERMISSION_DENIED'
   | 'PARSE_ERROR'
   | 'SNMP_ERROR'
+  | 'SSH_ERROR'
+  | 'CANCELED'
   | 'NOT_FOUND'
   | 'STORAGE_ERROR'
   | 'UNKNOWN';
@@ -28,6 +30,8 @@ const ERROR_MESSAGES: Record<ErrorCode, string> = {
   PERMISSION_DENIED: 'Falta un permiso para continuar. Podés habilitarlo en Ajustes.',
   PARSE_ERROR: 'El equipo respondió con datos que no pudimos leer.',
   SNMP_ERROR: 'El equipo rechazó la consulta SNMP. Revisá la comunidad.',
+  SSH_ERROR: 'Error en la sesión SSH. Revisá que el servicio esté activo y las credenciales.',
+  CANCELED: 'Operación cancelada por el usuario.',
   NOT_FOUND: 'No encontramos este registro.',
   STORAGE_ERROR: 'No se pudo guardar en el teléfono. Revisá el espacio disponible.',
   UNKNOWN: 'Algo salió mal. Probá de nuevo.',

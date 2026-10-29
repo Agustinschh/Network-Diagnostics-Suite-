@@ -39,7 +39,15 @@
   - [x] Utilidades de formateo (`src/utils/format.ts`) para uptime, bytes y fechas.
   - [x] Componente `InterfaceRow` y pantalla `SnmpScreen` conectada a WatermelonDB con persistencia transaccional y actualización de MAC.
   - [x] Tests unitarios con socket UDP mockeado aprobados (`__tests__/snmp/client.test.ts`).
-- [ ] **Fase 5 — Credenciales seguras y SSH (RF-03)**
+- [x] **Fase 5 — Credenciales seguras y SSH (RF-03)**
+  - [x] Almacén seguro (`src/services/security/CredentialStore.ts`) con `react-native-keychain`, servicios aislados por dispositivo (`netdiag.ssh.*` y `netdiag.snmp.*`), con nivel `SECURE_HARDWARE` y fallback automático.
+  - [x] Perfiles cerrados de telecomunicaciones (`src/services/ssh/profiles.ts`): Cisco IOS, MikroTik RouterOS, OpenWrt, Huawei VRP y Linux genérico.
+  - [x] Detección inteligente de perfil sugerido a partir de `sysDescr` MIB-II.
+  - [x] Servicio de ejecución SSH (`src/services/ssh/SshService.ts`) sobre `@dylankenneally/react-native-ssh-sftp` con timeouts de conexión/comando, límite de 256 KB con truncamiento, soporte de cancelación `AbortSignal` y desconexión obligatoria en bloque `finally`.
+  - [x] Componente `TerminalView` (`src/components/TerminalView.tsx`) con tipografía monoespaciada, prompt visual, tiempos de respuesta y botón para copiar al portapapeles.
+  - [x] Pantalla `CredentialsScreen` con validación Zod y gestión segura de usuario, clave y comunidad SNMP.
+  - [x] Pantalla `SshScreen` con selector de perfil en pills, feedback en vivo y guardado atómico en `diagnostics` y `outbox`.
+  - [x] Tests unitarios aprobados (`__tests__/ssh/profiles.test.ts`).
 - [ ] **Fase 6 — Cámara, QR, fotos y GPS (RF-04, RF-05)**
 - [ ] **Fase 7 — Instalación y reporte PDF (RF-05, RF-06)**
 - [ ] **Fase 8 — Backend stub y sincronización outbox (RF-07)**
