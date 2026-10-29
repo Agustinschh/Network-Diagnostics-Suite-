@@ -7,6 +7,7 @@ import { probeHost } from './tcpProbe';
 import { scanMdns, MdnsDevice } from './mdns';
 import { devicesRepository } from '../../db/repositories/devices';
 import { Device } from '../../db/models/Device';
+import { snmpClient } from '../snmp/SnmpClient';
 
 export interface DiscoveredHost {
   ip: string;
@@ -112,6 +113,22 @@ export class DiscoveryService {
             hostsMap.set(currentIp, host);
             foundCount++;
             onHost?.(host);
+          } else if (!signal?.aborted) {
+            // Sondeo SNMP para hosts no vivos por TCP (Fase 3 tarea 3 / Fase 4)
+            try {
+              const snmpProbe = await snmpClient.probe(currentIp);
+              if (snmpProbe.alive) {
+                const host: DiscoveredHost = {
+                  ip: currentIp,
+                  hostname: snmpProbe.sysName,
+                  openPorts: [161],
+                  sources: ['snmp'],
+                };
+                hostsMap.set(currentIp, host);
+                foundCount++;
+                onHost?.(host);
+              }
+            } catch {}
           }
         } catch (err) {
           logger.warn(`Error al sondear ${currentIp}:`, err);

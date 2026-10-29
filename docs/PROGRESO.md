@@ -29,7 +29,16 @@
   - [x] Store reactivo de escaneo con Zustand y cancelación limpia vía AbortController (`src/store/scanStore.ts`).
   - [x] Pantallas operativas: `ScanScreen` con barra de progreso determinada y `ManualHostScreen` con validación Zod.
   - [x] Tests unitarios aprobados (`__tests__/discovery/subnet.test.ts`).
-- [ ] **Fase 4 — Cliente SNMP y codec BER (RF-02)**
+- [x] **Fase 4 — Cliente SNMP y codec BER (RF-02)**
+  - [x] Codec BER/ASN.1 propio implementado (`src/services/snmp/ber.ts`) con soporte completo de INTEGER, OCTET STRING, NULL, OID, SEQUENCE, Counter32, Gauge32, TimeTicks, Counter64 y excepciones SNMP.
+  - [x] Validación al 100% contra el vector de prueba canónico de 43 bytes y casos de bordes (`__tests__/snmp/ber.test.ts`).
+  - [x] OIDs estándar MIB-II definidos (`src/services/snmp/oids.ts`).
+  - [x] Codificador y decodificador PDU (`src/services/snmp/pdu.ts`) para GetRequest, GetNextRequest y GetResponse.
+  - [x] Cliente SNMP (`src/services/snmp/SnmpClient.ts`) con socket UDP efímero, reintentos, fallback v2c -> v1 y walk de columnas de `ifTable`.
+  - [x] Sondeo SNMP ligero integrado en `DiscoveryService.ts` para hosts no vivos por TCP (cierre de Fase 3 tarea 3).
+  - [x] Utilidades de formateo (`src/utils/format.ts`) para uptime, bytes y fechas.
+  - [x] Componente `InterfaceRow` y pantalla `SnmpScreen` conectada a WatermelonDB con persistencia transaccional y actualización de MAC.
+  - [x] Tests unitarios con socket UDP mockeado aprobados (`__tests__/snmp/client.test.ts`).
 - [ ] **Fase 5 — Credenciales seguras y SSH (RF-03)**
 - [ ] **Fase 6 — Cámara, QR, fotos y GPS (RF-04, RF-05)**
 - [ ] **Fase 7 — Instalación y reporte PDF (RF-05, RF-06)**
